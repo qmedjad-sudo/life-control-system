@@ -30,6 +30,7 @@ function App() {
         <main className="max-w-7xl mx-auto px-4 py-8">
           <Routes>
             <Route path="/" element={<Dashboard />} />
+
             <Route path="/subjects" element={<SubjectsPage />} />
           </Routes>
         </main>
@@ -45,6 +46,7 @@ function App() {
 function Dashboard() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <Card title="Subjects" icon="📚" />
       <CardLink title="Subjects" icon="📚" href="/subjects" />
       <Card title="Habits" icon="✅" />
       <Card title="Goals" icon="🎯" />
@@ -84,4 +86,5 @@ function Card({ title, icon }: { title: string; icon: string }) {
   )
 }
 
+export default App
 export default App
