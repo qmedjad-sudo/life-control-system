@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { SubjectsPage } from './pages/SubjectsPage'
 
 function App() {
   const [serverStatus, setServerStatus] = useState<string>('Checking...')
@@ -29,6 +30,8 @@ function App() {
         <main className="max-w-7xl mx-auto px-4 py-8">
           <Routes>
             <Route path="/" element={<Dashboard />} />
+
+            <Route path="/subjects" element={<SubjectsPage />} />
           </Routes>
         </main>
 
@@ -44,10 +47,32 @@ function Dashboard() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
       <Card title="Subjects" icon="📚" />
+      <CardLink title="Subjects" icon="📚" href="/subjects" />
       <Card title="Habits" icon="✅" />
       <Card title="Goals" icon="🎯" />
       <Card title="Tasks" icon="📝" />
     </div>
+  )
+}
+
+function CardLink({
+  title,
+  icon,
+  href,
+}: {
+  title: string
+  icon: string
+  href: string
+}) {
+  return (
+    <a
+      href={href}
+      className="bg-white rounded-lg shadow p-6 text-center hover:shadow-lg transition cursor-pointer"
+    >
+      <div className="text-4xl mb-2">{icon}</div>
+      <h2 className="text-xl font-semibold text-gray-800">{title}</h2>
+      <p className="text-gray-500 text-sm mt-2">Click to view</p>
+    </a>
   )
 }
 
@@ -61,4 +86,5 @@ function Card({ title, icon }: { title: string; icon: string }) {
   )
 }
 
+export default App
 export default App
